@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMZA MEHBOOB | Senior Data Engineer & Cloud Data Architect</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #0B0F19;
+            --bg-card: rgba(17, 24, 39, 0.75);
+            --bg-card-hover: rgba(31, 41, 55, 0.85);
+            --primary: #00F2FE;
+            --primary-rgb: 0, 242, 254;
+            --secondary: #4FACFE;
+            --secondary-rgb: 79, 172, 254;
+            --accent: #3B82F6;
+            --text-main: #F9FAFB;
+            --text-muted: #9CA3AF;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --glow: rgba(0, 242, 254, 0.28);
+        }
+
+        /* 6 Dynamic Theme Presets */
+        [data-theme="azure"] {
+            --bg-main: #0B0F19;
+            --bg-card: rgba(17, 24, 39, 0.8);
+            --primary: #00F2FE;
+            --primary-rgb: 0, 242, 254;
+            --secondary: #4FACFE;
+            --secondary-rgb: 79, 172, 254;
+            --accent: #3B82F6;
+            --glow: rgba(0, 242, 254, 0.3);
+        }
+
+        [data-theme="emerald"] {
+            --bg-main: #06140E;
+            --bg-card: rgba(11, 34, 24, 0.8);
+            --primary: #00E676;
+            --primary-rgb: 0, 230, 118;
+            --secondary: #10B981;
+            --secondary-rgb: 16, 185, 129;
+            --accent: #059669;
+            --glow: rgba(0, 230, 118, 0.3);
+        }
+
+        [data-theme="synthwave"] {
+            --bg-main: #0D0714;
+            --bg-card: rgba(24, 13, 38, 0.8);
+            --primary: #FF007F;
+            --primary-rgb: 255, 0, 127;
+            --secondary: #00F0FF;
+            --secondary-rgb: 0, 240, 255;
+            --accent: #A855F7;
+            --glow: rgba(255, 0, 127, 0.3);
+        }
+
+        [data-theme="solar"] {
+            --bg-main: #120C06;
+            --bg-card: rgba(31, 21, 11, 0.8);
+            --primary: #FF5722;
+            --primary-rgb: 255, 87, 34;
+            --secondary: #F59E0B;
+            --secondary-rgb: 245, 158, 11;
+            --accent: #D97706;
+            --glow: rgba(255, 87, 34, 0.3);
+        }
+
+        [data-theme="amethyst"] {
+            --bg-main: #0F0A1C;
+            --bg-card: rgba(26, 16, 47, 0.8);
+            --primary: #C084FC;
+            --primary-rgb: 192, 132, 252;
+            --secondary: #A855F7;
+            --secondary-rgb: 168, 85, 247;
+            --accent: #7E22CE;
+            --glow: rgba(192, 132, 252, 0.3);
+        }
+
+        [data-theme="ice"] {
+            --bg-main: #0F172A;
+            --bg-card: rgba(30, 41, 59, 0.8);
+            --primary: #38BDF8;
+            --primary-rgb: 56, 189, 248;
+            --secondary: #F8FAFC;
+            --secondary-rgb: 248, 250, 252;
+            --accent: #0284C7;
+            --glow: rgba(56, 189, 248, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .theme-primary-text {
+            color: var(--primary);
+        }
+
+        .theme-primary-bg {
+            background-color: var(--primary);
+        }
+
+        .theme-primary-border {
+            border-color: var(--primary);
+        }
+
+        .theme-gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .theme-gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .glass-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(16px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(var(--primary-rgb), 0.45);
+            box-shadow: 0 10px 30px -10px var(--glow);
+        }
+
+        .glow-headline {
+            text-shadow: 0 0 35px var(--glow), 0 0 15px rgba(var(--primary-rgb), 0.5);
+        }
+
+        .animated-underline {
+            position: relative;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), transparent);
+            box-shadow: 0 0 15px var(--glow);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Canvas background */
+        #data-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen selection:bg-cyan-400 selection:text-slate-950">
+
+    <!-- Interactive Background Canvas -->
+    <canvas id="data-bg"></canvas>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <header class="sticky top-0 z-40 w-full border-b border-white/10 bg-slate-950/70 backdrop-blur-xl transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo with Prominent HAMZA MEHBOOB Title -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl theme-gradient-bg flex items-center justify-center font-black text-slate-950 text-xl shadow-lg transform group-hover:scale-105 transition-all">
+                    HM
+                </div>
+                <div>
+                    <span class="text-lg font-extrabold tracking-tight text-white block leading-tight group-hover:text-cyan-300 transition-colors">HAMZA MEHBOOB</span>
+                    <span class="text-[10px] font-mono theme-primary-text block tracking-widest font-bold">SR. DATA ENGINEER</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-mono font-semibold tracking-wider text-slate-300">
+                <a href="#about" class="hover:text-white transition-colors">ABOUT</a>
+                <a href="#impact" class="hover:text-white transition-colors">IMPACT</a>
+                <a href="#skills" class="hover:text-white transition-colors">SKILLS MATRIX</a>
+                <a href="#experience" class="hover:text-white transition-colors">EXPERIENCE</a>
+                <a href="#projects" class="hover:text-white transition-colors">ARCHITECTURE</a>
+                <a href="#certifications" class="hover:text-white transition-colors">CERTS</a>
+                <a href="#contact" class="hover:text-white transition-colors">CONTACT</a>
+            </nav>
+
+            <!-- Theme Switcher & Actions -->
+            <div class="flex items-center gap-3">
+                
+                <!-- Multi-Color Theme Dropdown Selector -->
+                <div class="relative group">
+                    <button id="theme-menu-btn" class="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/15 bg-white/5 text-xs font-mono text-slate-200 hover:bg-white/10 transition-all shadow-md">
+                        <i class="fa-solid fa-palette theme-primary-text text-sm"></i>
+                        <span id="current-theme-name" class="hidden sm:inline font-semibold">Azure Databricks</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Dropdown Palette Options -->
+                    <div class="absolute right-0 top-full mt-2 w-64 glass-panel rounded-2xl p-2.5 hidden group-hover:block hover:block shadow-2xl z-50 border border-white/15">
+                        <div class="text-[10px] uppercase font-mono tracking-widest text-slate-400 px-3 py-1 font-bold border-b border-white/10 mb-1.5 flex items-center justify-between">
+                            <span>Color Preset Palette</span>
+                            <i class="fa-solid fa-swatchbook text-cyan-400"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <button onclick="setTheme('azure')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between hover:bg-white/10 transition-all">
+                                <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-[#00F2FE] shadow-sm"></span> Azure Databricks</span>
+                                <span class="text-[10px] font-mono text-cyan-400 font-bold">Cyan</span>
+                            </button>
+                            <button onclick="setTheme('emerald')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between hover:bg-white/10 transition-all">
+                                <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-[#00E676] shadow-sm"></span> Emerald Lakehouse</span>
+                                <span class="text-[10px] font-mono text-emerald-400 font-bold">Mint</span>
+                            </button>
+                            <button onclick="setTheme('synthwave')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between hover:bg-white/10 transition-all">
+                                <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-[#FF007F] shadow-sm"></span> Cyberpunk Synthwave</span>
+                                <span class="text-[10px] font-mono text-pink-400 font-bold">Pink</span>
+                            </button>
+                            <button onclick="setTheme('solar')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between hover:bg-white/10 transition-all">
+                                <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-[#FF5722] shadow-sm"></span> Solar Amber / Gold</span>
+                                <span class="text-[10px] font-mono text-amber-400 font-bold">Gold</span>
+                            </button>
+                            <button onclick="setTheme('amethyst')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between hover:bg-white/10 transition-all">
+                                <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-[#C084FC] shadow-sm"></span> Neon Amethyst</span>
+                                <span class="text-[10px] font-mono text-purple-400 font-bold">Purple</span>
+                            </button>
+                            <button onclick="setTheme('ice')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between hover:bg-white/10 transition-all">
+                                <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-[#38BDF8] shadow-sm"></span> Ice Silver</span>
+                                <span class="text-[10px] font-mono text-sky-400 font-bold">Silver</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Download Button -->
+                <button onclick="openResumeModal()" class="hidden md:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-xs font-mono text-white transition-all">
+                    <i class="fa-solid fa-file-pdf theme-primary-text"></i> Resume
+                </button>
+
+                <!-- Contact CTA Button -->
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs theme-gradient-bg text-slate-950 shadow-lg hover:opacity-95 transition-all transform hover:scale-105">
+                    <i class="fa-solid fa-paper-plane"></i> Contact Me
+                </a>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl text-slate-300 hover:text-white bg-white/5">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-drawer" class="hidden lg:hidden border-t border-white/10 bg-slate-950/95 backdrop-blur-2xl px-6 py-5 space-y-3 font-mono text-xs">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">ABOUT</a>
+            <a href="#impact" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">IMPACT METRICS</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">SKILLS MATRIX</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">EXPERIENCE TIMELINE</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">ARCHITECTURE PROJECTS</a>
+            <a href="#certifications" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">CERTIFICATIONS</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">CONTACT</a>
+            <button onclick="openResumeModal()" class="w-full mt-2 py-2.5 rounded-xl border border-white/15 bg-white/10 text-white font-bold flex items-center justify-center gap-2">
+                <i class="fa-solid fa-file-pdf theme-primary-text"></i> Download Resume
+            </button>
+        </div>
+    </header>
+
+    <section id="about" class="relative z-10 pt-12 pb-20 md:pt-24 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Hero Left Column -->
+            <div class="lg:col-span-7 space-y-7">
+                
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md">
+                    <span class="w-2.5 h-2.5 rounded-full theme-primary-bg animate-ping"></span>
+                    <span class="w-2.5 h-2.5 rounded-full theme-primary-bg -ml-5.5"></span>
+                    <span class="text-xs font-mono uppercase tracking-widest text-slate-200 font-semibold">Available for Senior / Staff Data Engineering Roles</span>
+                </div>
+
+                <!-- Massive Headline & Name -->
+                <div class="space-y-3">
+                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-white leading-none glow-headline">
+                        <span class="theme-gradient-text animated-underline inline-block">HAMZA MEHBOOB</span>
+                    </h1>
+                    <p class="text-sm sm:text-base font-mono theme-primary-text font-bold tracking-wider pt-2">
+                        SENIOR DATA ENGINEER | CLOUD DATA PLATFORMS | LAKEHOUSE ARCHITECTURE
+                    </p>
+                </div>
+
+                <!-- Specialty Tag Badges -->
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                    <span class="px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-diagram-project text-xs"></i> ETL/ELT & Data Integration
+                    </span>
+                    <span class="px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-300 font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt text-xs"></i> Real-Time & Streaming Data
+                    </span>
+                    <span class="px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-brain text-xs"></i> AI-Ready Data Infrastructure
+                    </span>
+                </div>
+
+                <!-- Summary Text -->
+                <p class="text-slate-300 text-base leading-relaxed max-w-2xl">
+                    Results-driven Senior Data Engineer with <strong class="text-white font-semibold">9+ years of experience</strong> building petabyte-scale Medallion Lakehouses, real-time streaming engines (Kafka, Spark Streaming, Flink), and AI vector infrastructure. Expert in orchestrating multi-cloud platforms across Databricks, Snowflake, AWS, and Azure, optimizing ingestion throughputs, and delivering over <strong class="text-white font-semibold">$140,000/year in FinOps cloud savings</strong>.
+                </p>
+
+                <!-- Quick Action Buttons -->
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <a href="#contact" class="px-6 py-3.5 rounded-xl font-extrabold text-xs theme-gradient-bg text-slate-950 shadow-xl hover:opacity-90 hover:scale-[1.02] transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> Contact Me
+                    </a>
+                    <a href="#projects" class="px-6 py-3.5 rounded-xl font-bold text-xs glass-panel text-white hover:border-cyan-400 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-diagram-next theme-primary-text"></i> View Projects
+                    </a>
+                    <button onclick="copyToClipboard('hamzamehboobengineer@gmail.com', 'Email address copied!')" class="px-4 py-3.5 rounded-xl font-mono text-xs glass-panel text-slate-200 hover:border-cyan-400 transition-all flex items-center gap-2" title="Copy Email">
+                        <i class="fa-regular fa-copy theme-primary-text"></i> Copy Email
+                    </button>
+                    <button onclick="openResumeModal()" class="px-4 py-3.5 rounded-xl font-mono text-xs glass-panel text-slate-200 hover:border-cyan-400 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-download theme-primary-text"></i> Resume
+                    </button>
+                </div>
+
+                <!-- Contact Info Bar -->
+                <div class="flex flex-wrap items-center gap-6 pt-4 text-xs font-mono text-slate-400 border-t border-white/10">
+                    <div class="flex items-center gap-2 hover:text-white cursor-pointer transition-colors" onclick="copyToClipboard('(281) 720-6090', 'Phone number copied!')">
+                        <i class="fa-solid fa-phone theme-primary-text"></i> (281) 720-6090
+                    </div>
+                    <div class="flex items-center gap-2 hover:text-white cursor-pointer transition-colors" onclick="copyToClipboard('Chico, CA 95973', 'Location copied!')">
+                        <i class="fa-solid fa-location-dot theme-primary-text"></i> Chico, CA 95973
+                    </div>
+                    <a href="https://www.linkedin.com/in/muhammad-fahad-altaf-0b5b76382/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-cyan-300 transition-colors">
+                        <i class="fa-brands fa-linkedin text-sm text-blue-400"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/hamzy-engineer" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-cyan-300 transition-colors">
+                        <i class="fa-brands fa-github text-sm text-purple-400"></i> GitHub
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Hero Right Live Terminal Card -->
+            <div class="lg:col-span-5">
+                <div class="glass-panel rounded-3xl p-5 border border-white/15 relative overflow-hidden shadow-2xl">
+                    <!-- Terminal Top Header -->
+                    <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4 font-mono text-xs text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                            <span class="ml-2 text-slate-200 font-bold">hamza_data_config.py</span>
+                        </div>
+                        <span class="text-emerald-400 flex items-center gap-1.5 text-[11px] font-bold"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> ACTIVE NODE</span>
+                    </div>
+
+                    <!-- Code / Config Switcher Tabs -->
+                    <div class="flex items-center gap-2 mb-3 font-mono text-[11px]">
+                        <button onclick="switchTerminalTab('py')" id="tab-py" class="px-3 py-1 rounded-lg bg-white/10 text-white font-bold border border-white/10">Python Config</button>
+                        <button onclick="switchTerminalTab('stream')" id="tab-stream" class="px-3 py-1 rounded-lg bg-white/5 text-slate-400 hover:text-white border border-transparent">PySpark Stream</button>
+                        <button onclick="switchTerminalTab('json')" id="tab-json" class="px-3 py-1 rounded-lg bg-white/5 text-slate-400 hover:text-white border border-transparent">JSON Metrics</button>
+                    </div>
+
+                    <!-- Terminal Body Content -->
+                    <div id="terminal-content" class="font-mono text-xs space-y-2 text-slate-300 overflow-x-auto leading-relaxed bg-slate-950/90 p-4 rounded-2xl border border-white/10 min-h-[220px]">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <!-- Pipeline Metrics Monitor -->
+                    <div class="mt-4 p-3 rounded-2xl bg-white/5 border border-white/10 font-mono text-xs space-y-2">
+                        <div class="flex justify-between items-center text-[11px]">
+                            <span class="text-slate-400">Pipeline Ingestion Rate:</span>
+                            <strong class="theme-primary-text font-bold">14,800 msgs/sec</strong>
+                        </div>
+                        <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-white/10">
+                            <div class="theme-primary-bg h-full w-4/5 animate-pulse"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-[10px] text-slate-400 pt-0.5">
+                            <span>SLA Compliance: <strong class="text-emerald-400">99.99%</strong></span>
+                            <span>Latency: <strong class="text-cyan-300">18ms</strong></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="impact" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <h2 class="text-xs font-mono uppercase tracking-widest theme-primary-text font-bold mb-2">Quantified Impact Metrics</h2>
+            <h3 class="text-3xl font-extrabold text-white">Proven Platform & Financial Outcomes</h3>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 sm:gap-6">
+            
+            <div class="glass-panel rounded-2xl p-5 text-center relative group hover:border-cyan-400">
+                <div class="text-3xl sm:text-4xl font-black theme-gradient-text font-mono mb-1">$140K/yr</div>
+                <div class="text-xs font-bold text-white tracking-wide uppercase">Cloud Savings</div>
+                <div class="text-[11px] text-slate-400 mt-1">FinOps Compute Optimization</div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-5 text-center relative group hover:border-cyan-400">
+                <div class="text-3xl sm:text-4xl font-black theme-gradient-text font-mono mb-1">5TB+</div>
+                <div class="text-xs font-bold text-white tracking-wide uppercase">Daily Ingestion</div>
+                <div class="text-[11px] text-slate-400 mt-1">EHR & Clinical Streams</div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-5 text-center relative group hover:border-cyan-400">
+                <div class="text-3xl sm:text-4xl font-black theme-gradient-text font-mono mb-1">150M+</div>
+                <div class="text-xs font-bold text-white tracking-wide uppercase">Real-Time Events</div>
+                <div class="text-[11px] text-slate-400 mt-1">Kafka / Flink Streaming</div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-5 text-center relative group hover:border-cyan-400">
+                <div class="text-3xl sm:text-4xl font-black theme-gradient-text font-mono mb-1">99.99%</div>
+                <div class="text-xs font-bold text-white tracking-wide uppercase">Pipeline Uptime</div>
+                <div class="text-[11px] text-slate-400 mt-1">SLA Reliability Target</div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-5 text-center relative group hover:border-cyan-400 col-span-2 md:col-span-1">
+                <div class="text-3xl sm:text-4xl font-black theme-gradient-text font-mono mb-1">9+ Yrs</div>
+                <div class="text-xs font-bold text-white tracking-wide uppercase">Core Experience</div>
+                <div class="text-[11px] text-slate-400 mt-1">Data Platform Architecture</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div>
+                <h2 class="text-xs font-mono uppercase tracking-widest theme-primary-text font-bold mb-2">Technical Core Competencies</h2>
+                <h3 class="text-3xl font-extrabold text-white">Interactive Skills Matrix</h3>
+            </div>
+            
+            <!-- Skill Search Box -->
+            <div class="relative w-full md:w-80">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+                <input type="text" id="skill-search" oninput="filterSkills()" placeholder="Search skill (e.g. Spark, AWS, Delta)..." class="w-full bg-white/5 border border-white/15 rounded-xl pl-9 pr-4 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition-all font-mono">
+            </div>
+        </div>
+
+        <!-- Skill Category Buttons -->
+        <div class="flex flex-wrap gap-2 mb-8" id="skill-tabs">
+            <button onclick="filterCategory('all', this)" class="skill-tab active px-4 py-2 rounded-xl text-xs font-mono font-bold border border-cyan-400 bg-cyan-500/10 text-cyan-300 transition-all">All Skills</button>
+            <button onclick="filterCategory('cloud', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">Cloud Platforms</button>
+            <button onclick="filterCategory('bigdata', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">Big Data & Streaming</button>
+            <button onclick="filterCategory('warehousing', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">Data Warehousing</button>
+            <button onclick="filterCategory('ai', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">AI & Vector Infra</button>
+            <button onclick="filterCategory('orchestration', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">Orchestration & Integration</button>
+            <button onclick="filterCategory('languages', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">Languages & DBs</button>
+            <button onclick="filterCategory('devops', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">DevOps & Data Quality</button>
+            <button onclick="filterCategory('governance', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">Governance & Security</button>
+            <button onclick="filterCategory('leadership', this)" class="skill-tab px-4 py-2 rounded-xl text-xs font-mono font-bold border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-all">Leadership & FinOps</button>
+        </div>
+
+        <!-- Dynamic Grid Container -->
+        <div id="skills-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Rendered by JS -->
+        </div>
+    </section>
+
+    <section id="experience" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-xs font-mono uppercase tracking-widest theme-primary-text font-bold mb-2">Career Journey & Leadership</h2>
+            <h3 class="text-3xl font-extrabold text-white">Professional Experience Timeline</h3>
+            <p class="text-sm text-slate-400 mt-2">Click any role to inspect full system architectures, key achievements, and technology stacks.</p>
+        </div>
+
+        <!-- Experience Timeline Cards -->
+        <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:-ml-px before:w-0.5 before:bg-white/15">
+
+            <!-- Job 1: Integra Connect -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-9 h-9 rounded-full theme-gradient-bg text-slate-950 font-bold text-sm shadow-xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <i class="fa-solid fa-hospital text-xs"></i>
+                </div>
+                <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-panel rounded-2xl p-6 border border-white/10 space-y-3 hover:border-cyan-400 transition-all">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Senior Data Engineer</h4>
+                            <span class="text-xs font-mono theme-primary-text font-bold">Integra Connect</span>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 font-mono text-[11px] text-cyan-300 font-bold">April 2023 – Present</span>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Architecting clinical oncology Medallion Lakehouses on Databricks Delta Lake & AWS. Ingesting 5TB+ daily EHR patient data with automated HIPAA/PHI column encryption, Unity Catalog governance, and sub-minute streaming alerts.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">Databricks</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">Delta Lake</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">PySpark</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">AWS S3/EMR</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">Unity Catalog</span>
+                    </div>
+
+                    <button onclick="openExperienceModal('integra')" class="mt-2 text-xs font-mono text-cyan-300 hover:text-white flex items-center gap-2 transition-colors font-bold">
+                        <span>Inspect Architecture & Impact</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Job 2: Pythian -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-9 h-9 rounded-full theme-gradient-bg text-slate-950 font-bold text-sm shadow-xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <i class="fa-solid fa-cloud text-xs"></i>
+                </div>
+                <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-panel rounded-2xl p-6 border border-white/10 space-y-3 hover:border-cyan-400 transition-all">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Warehouse Data Engineer</h4>
+                            <span class="text-xs font-mono theme-primary-text font-bold">Pythian</span>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] text-slate-300 font-bold">March 2022 – March 2023</span>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Led enterprise data warehouse modernization migrating legacy Hadoop/Netezza stacks to Snowflake Data Cloud. Built dbt Core transformation pipelines, Debezium CDC connectors, and automated Airflow DAG orchestration.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">Snowflake</span>
+                        <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">dbt Core</span>
+                        <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">Airflow</span>
+                        <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">Debezium CDC</span>
+                        <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300">Terraform</span>
+                    </div>
+
+                    <button onclick="openExperienceModal('pythian')" class="mt-2 text-xs font-mono text-cyan-300 hover:text-white flex items-center gap-2 transition-colors font-bold">
+                        <span>Inspect Architecture & Impact</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Job 3: Ocrolus -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-9 h-9 rounded-full theme-gradient-bg text-slate-950 font-bold text-sm shadow-xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <i class="fa-solid fa-file-invoice-dollar text-xs"></i>
+                </div>
+                <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-panel rounded-2xl p-6 border border-white/10 space-y-3 hover:border-cyan-400 transition-all">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Big Data Engineer</h4>
+                            <span class="text-xs font-mono theme-primary-text font-bold">Ocrolus</span>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] text-slate-300 font-bold">September 2019 – March 2022</span>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Engineered document intelligence & fintech data pipelines processing millions of financial records. Optimized PostgreSQL indexing and star-schema dimensional modeling to lower query latencies by 80%.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">Python</span>
+                        <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">PostgreSQL</span>
+                        <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">AWS Lambda</span>
+                        <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">Docker</span>
+                    </div>
+
+                    <button onclick="openExperienceModal('ocrolus')" class="mt-2 text-xs font-mono text-cyan-300 hover:text-white flex items-center gap-2 transition-colors font-bold">
+                        <span>Inspect Architecture & Impact</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Job 4: Ordergroove -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-9 h-9 rounded-full theme-gradient-bg text-slate-950 font-bold text-sm shadow-xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <i class="fa-solid fa-cart-shopping text-xs"></i>
+                </div>
+                <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-panel rounded-2xl p-6 border border-white/10 space-y-3 hover:border-cyan-400 transition-all">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">ETL/ELT Developer</h4>
+                            <span class="text-xs font-mono theme-primary-text font-bold">Ordergroove</span>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] text-slate-300 font-bold">June 2017 – August 2019</span>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Developed subscription billing data synchronization jobs, high-throughput REST APIs, and automated MySQL ETL pipelines serving enterprise e-commerce platforms.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300">Python</span>
+                        <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300">Django/REST</span>
+                        <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300">MySQL</span>
+                        <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300">Redis</span>
+                    </div>
+
+                    <button onclick="openExperienceModal('ordergroove')" class="mt-2 text-xs font-mono text-cyan-300 hover:text-white flex items-center gap-2 transition-colors font-bold">
+                        <span>Inspect Architecture & Impact</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-xs font-mono uppercase tracking-widest theme-primary-text font-bold mb-2">Featured Data Systems</h2>
+            <h3 class="text-3xl font-extrabold text-white">Platform System Architectures</h3>
+            <p class="text-sm text-slate-400 mt-2">Click any project to launch the interactive pipeline execution flow diagram and code snippet modal.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            
+            <!-- Project 1 -->
+            <div class="glass-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between hover:border-cyan-400 transition-all group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-xl shadow-lg">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 font-mono text-[10px] text-cyan-300 font-bold">HIPAA Lakehouse</span>
+                    </div>
+                    
+                    <h4 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">HIPAA-Compliant Patient Data Lakehouse & Analytics</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Petabyte-scale Medallion Delta Lake architecture processing 5TB+ daily patient EHR records with Unity Catalog fine-grained access governance and automated column de-identification.
+                    </p>
+
+                    <div class="space-y-2 pt-2 border-t border-white/10 text-xs font-mono text-slate-400">
+                        <div class="flex justify-between"><span>Throughput:</span><strong class="text-white">5TB+ / Day</strong></div>
+                        <div class="flex justify-between"><span>Cloud Savings:</span><strong class="text-emerald-400">$140,000 / Year</strong></div>
+                    </div>
+                </div>
+
+                <button onclick="openProjectModal('project1')" class="mt-6 w-full py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-cyan-500/20 text-xs font-mono text-cyan-300 hover:text-white transition-all font-bold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play text-[10px]"></i> Launch Architecture Flow
+                </button>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="glass-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between hover:border-cyan-400 transition-all group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-300 text-xl shadow-lg">
+                            <i class="fa-solid fa-bolt"></i>
+                        </span>
+                        <span class="px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 font-mono text-[10px] text-purple-300 font-bold">Real-Time Streaming</span>
+                    </div>
+
+                    <h4 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">Real-Time Financial Transaction & Fraud Detection Platform</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Sub-second event streaming pipeline using Kafka, Apache Flink, and pgvector vector search evaluating 150M+ daily events for immediate anomaly detection.
+                    </p>
+
+                    <div class="space-y-2 pt-2 border-t border-white/10 text-xs font-mono text-slate-400">
+                        <div class="flex justify-between"><span>Processing Latency:</span><strong class="text-white">&lt; 25 Milliseconds</strong></div>
+                        <div class="flex justify-between"><span>Volume:</span><strong class="text-purple-300">150M+ Daily Events</strong></div>
+                    </div>
+                </div>
+
+                <button onclick="openProjectModal('project2')" class="mt-6 w-full py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-purple-500/20 text-xs font-mono text-purple-300 hover:text-white transition-all font-bold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play text-[10px]"></i> Launch Architecture Flow
+                </button>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="glass-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between hover:border-cyan-400 transition-all group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-300 text-xl shadow-lg">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </span>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 font-mono text-[10px] text-emerald-300 font-bold">Multi-Cloud FinOps</span>
+                    </div>
+
+                    <h4 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">Multi-Cloud Customer Analytics & Integration Platform</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Cross-cloud Snowflake & AWS dbt data modeling framework with automated cluster rightsizing, unit economics tracking, and zero-downtime schema evolution.
+                    </p>
+
+                    <div class="space-y-2 pt-2 border-t border-white/10 text-xs font-mono text-slate-400">
+                        <div class="flex justify-between"><span>Stack:</span><strong class="text-white">Snowflake, AWS, dbt</strong></div>
+                        <div class="flex justify-between"><span>Efficiency Gain:</span><strong class="text-emerald-400">42% Cost Reduction</strong></div>
+                    </div>
+                </div>
+
+                <button onclick="openProjectModal('project3')" class="mt-6 w-full py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-emerald-500/20 text-xs font-mono text-emerald-300 hover:text-white transition-all font-bold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play text-[10px]"></i> Launch Architecture Flow
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="certifications" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Certifications Left -->
+            <div class="lg:col-span-7 space-y-6">
+                <div>
+                    <h2 class="text-xs font-mono uppercase tracking-widest theme-primary-text font-bold mb-2">Verified Credentials</h2>
+                    <h3 class="text-3xl font-extrabold text-white">Professional Certifications</h3>
+                </div>
+
+                <div class="space-y-4">
+                    
+                    <div class="glass-panel rounded-2xl p-4 border border-white/10 flex items-center gap-4 hover:border-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl shrink-0">
+                            <i class="fa-brands fa-microsoft"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)</h4>
+                            <span class="text-xs font-mono theme-primary-text font-semibold">Microsoft Certified Data Platform Engineer</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4 border border-white/10 flex items-center gap-4 hover:border-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl shrink-0">
+                            <i class="fa-brands fa-aws"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">AWS Certified Data Engineer – Associate</h4>
+                            <span class="text-xs font-mono theme-primary-text font-semibold">Amazon Web Services</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4 border border-white/10 flex items-center gap-4 hover:border-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-2xl shrink-0">
+                            <i class="fa-solid fa-cube"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Databricks Certified Data Engineer Professional</h4>
+                            <span class="text-xs font-mono theme-primary-text font-semibold">Databricks Lakehouse Platform</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Education Right -->
+            <div class="lg:col-span-5">
+                <div class="glass-panel rounded-3xl p-6 border border-white/10 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-300 text-xl shadow-lg">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Education</h3>
+                            <span class="text-xs font-mono text-slate-400">Academic Foundation</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                        <h4 class="text-base font-bold text-white">Bachelor of Science in Computer Science</h4>
+                        <p class="text-xs text-slate-300">Distributed Systems, Algorithms, Database Theory & Software Engineering</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 text-xs text-slate-300">
+                        <div class="font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-brain theme-primary-text"></i> Core Academic Specializations
+                        </div>
+                        <ul class="list-disc list-inside space-y-1 text-slate-400 font-mono">
+                            <li>Distributed Data Lake Architectures</li>
+                            <li>Relational & NoSQL Storage Mechanics</li>
+                            <li>Real-Time Streaming Systems & Queues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-white/15 relative overflow-hidden shadow-2xl">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Contact Info Left -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div>
+                        <h2 class="text-xs font-mono uppercase tracking-widest theme-primary-text font-bold mb-2">Initiate Connection</h2>
+                        <h3 class="text-3xl font-extrabold text-white">Let's Build Scale Together</h3>
+                    </div>
+
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        I am currently open to Senior/Staff Data Engineering, Cloud Data Architect, and Data Platform Leadership roles. Reach out via email, phone, or send a direct message below.
+                    </p>
+
+                    <div class="space-y-3 font-mono text-xs">
+                        <div onclick="copyToClipboard('hamzamehboobengineer@gmail.com', 'Email copied to clipboard!')" class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400 transition-all flex items-center justify-between cursor-pointer group">
+                            <span class="flex items-center gap-3 text-slate-200">
+                                <i class="fa-solid fa-envelope theme-primary-text text-base"></i> hamzamehboobengineer@gmail.com
+                            </span>
+                            <span class="text-cyan-300 text-[10px] font-bold group-hover:underline">Copy</span>
+                        </div>
+
+                        <div onclick="copyToClipboard('(281) 720-6090', 'Phone number copied!')" class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400 transition-all flex items-center justify-between cursor-pointer group">
+                            <span class="flex items-center gap-3 text-slate-200">
+                                <i class="fa-solid fa-phone theme-primary-text text-base"></i> (281) 720-6090
+                            </span>
+                            <span class="text-cyan-300 text-[10px] font-bold group-hover:underline">Copy</span>
+                        </div>
+
+                        <div onclick="copyToClipboard('Chico, CA 95973', 'Location copied!')" class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400 transition-all flex items-center justify-between cursor-pointer group">
+                            <span class="flex items-center gap-3 text-slate-200">
+                                <i class="fa-solid fa-location-dot theme-primary-text text-base"></i> Chico, CA 95973
+                            </span>
+                            <span class="text-cyan-300 text-[10px] font-bold group-hover:underline">Copy</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 pt-2">
+                        <a href="https://www.linkedin.com/in/muhammad-fahad-altaf-0b5b76382/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-xs font-mono text-white transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-linkedin text-blue-400 text-sm"></i> LinkedIn Profile
+                        </a>
+                        <a href="https://github.com/hamzy-engineer" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-xs font-mono text-white transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-github text-purple-400 text-sm"></i> GitHub Profile
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Message Inquiry Form Right -->
+                <div class="lg:col-span-6">
+                    <form onsubmit="handleFormSubmit(event)" class="p-6 sm:p-8 rounded-3xl bg-slate-950/90 border border-white/15 space-y-4 shadow-2xl">
+                        <h4 class="text-base font-bold text-white">Send Direct Message</h4>
+                        
+                        <div>
+                            <label class="block text-[11px] font-mono text-slate-400 mb-1">Your Name</label>
+                            <input type="text" required placeholder="Jane Doe" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400 transition-all font-mono">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-mono text-slate-400 mb-1">Your Email</label>
+                            <input type="email" required placeholder="jane@company.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400 transition-all font-mono">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-mono text-slate-400 mb-1">Message</label>
+                            <textarea rows="3" required placeholder="Hello Hamza, we would love to discuss a Senior Data Engineering role..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400 transition-all font-mono"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl font-black text-xs theme-gradient-bg text-slate-950 hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-white/10 py-8 px-4 text-center text-xs font-mono text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>&copy; 2026 HAMZA MEHBOOB. All rights reserved.</div>
+            <div class="flex items-center gap-2 text-[11px]">
+                <span class="w-2 h-2 rounded-full theme-primary-bg animate-pulse"></span>
+                <span>Theme Active: <span id="footer-theme-indicator" class="theme-primary-text font-bold">Azure Databricks</span></span>
+            </div>
+        </div>
+    </footer>
+
+    
+    <!-- Experience Modal Structure -->
+    <div id="exp-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 border border-white/15 max-h-[90vh] overflow-y-auto relative space-y-6 shadow-2xl">
+            <button onclick="closeExperienceModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="exp-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Project Pipeline Simulation Modal -->
+    <div id="proj-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-4xl rounded-3xl p-6 sm:p-8 border border-white/15 max-h-[90vh] overflow-y-auto relative space-y-6 shadow-2xl">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="proj-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Resume Viewer Modal -->
+    <div id="resume-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 border border-white/15 max-h-[90vh] overflow-y-auto relative space-y-6 shadow-2xl">
+            <button onclick="closeResumeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="space-y-6 font-mono">
+                <div class="border-b border-white/10 pb-4">
+                    <span class="text-xs theme-primary-text font-bold uppercase tracking-wider">CURRICULUM VITAE</span>
+                    <h3 class="text-2xl font-black text-white mt-1">HAMZA MEHBOOB</h3>
+                    <p class="text-xs text-slate-400">Senior Data Engineer & Cloud Data Architect | Chico, CA 95973</p>
+                </div>
+
+                <div class="space-y-4 text-xs text-slate-300">
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                        <h4 class="font-bold text-white uppercase theme-primary-text">Executive Summary</h4>
+                        <p class="leading-relaxed">Senior Data Engineer with 9+ years of expertise architecting high-throughput petabyte data lakes, Medallion Lakehouses (Databricks Delta Lake, Snowflake), PySpark pipelines, Kafka/Flink real-time streaming engines, and AI vector database integration. Proven history of reducing compute costs by $140K/yr and enforcing HIPAA/PHI data security.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                        <h4 class="font-bold text-white uppercase theme-primary-text">Core Platforms & Tools</h4>
+                        <p><strong>Cloud:</strong> AWS (S3, EMR, Glue, Lambda), Azure Databricks, GCP BigQuery<br>
+                        <strong>Engines:</strong> Apache Spark, PySpark, Delta Lake, Snowflake, Kafka, Flink<br>
+                        <strong>Orchestration:</strong> Apache Airflow, dbt Core, Debezium CDC, Terraform<br>
+                        <strong>Databases & Vector:</strong> PostgreSQL, MongoDB, Redis, Pinecone, pgvector</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 pt-2 justify-end">
+                    <button onclick="copyToClipboard('hamzamehboobengineer@gmail.com', 'Contact Hamza for full resume PDF!')" class="px-5 py-2.5 rounded-xl font-bold text-xs border border-white/15 bg-white/5 text-white hover:bg-white/10 transition-all flex items-center gap-2">
+                        <i class="fa-regular fa-copy theme-primary-text"></i> Request Official PDF
+                    </button>
+                    <button onclick="closeResumeModal()" class="px-5 py-2.5 rounded-xl font-bold text-xs theme-gradient-bg text-slate-950 transition-all">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themes = {
+            azure: {
+                name: 'Azure Databricks',
+                primary: '#00F2FE',
+                secondary: '#4FACFE',
+                glow: 'rgba(0, 242, 254, 0.3)',
+                bg: '#0B0F19'
+            },
+            emerald: {
+                name: 'Emerald Lakehouse',
+                primary: '#00E676',
+                secondary: '#10B981',
+                glow: 'rgba(0, 230, 118, 0.3)',
+                bg: '#06140E'
+            },
+            synthwave: {
+                name: 'Cyberpunk Synthwave',
+                primary: '#FF007F',
+                secondary: '#00F0FF',
+                glow: 'rgba(255, 0, 127, 0.3)',
+                bg: '#0D0714'
+            },
+            solar: {
+                name: 'Solar Amber / Gold',
+                primary: '#FF5722',
+                secondary: '#F59E0B',
+                glow: 'rgba(255, 87, 34, 0.3)',
+                bg: '#120C06'
+            },
+            amethyst: {
+                name: 'Neon Amethyst',
+                primary: '#C084FC',
+                secondary: '#A855F7',
+                glow: 'rgba(192, 132, 252, 0.3)',
+                bg: '#0F0A1C'
+            },
+            ice: {
+                name: 'Ice Silver',
+                primary: '#38BDF8',
+                secondary: '#F8FAFC',
+                glow: 'rgba(56, 189, 248, 0.3)',
+                bg: '#0F172A'
+            }
+        };
+
+        let currentThemeKey = 'azure';
+
+        function setTheme(key) {
+            if (!themes[key]) return;
+            currentThemeKey = key;
+            document.documentElement.setAttribute('data-theme', key);
+            document.getElementById('current-theme-name').innerText = themes[key].name;
+            document.getElementById('footer-theme-indicator').innerText = themes[key].name;
+            
+            showToast(`Active Theme Switched to ${themes[key].name}`);
+        }
+
+        // Terminal Content Snippets
+        const terminalSnippets = {
+            py: `<p class="text-slate-500"># HAMZA MEHBOOB - Senior Data Engineer Profile</p>
+<p><span class="text-purple-400">class</span> <span class="text-cyan-300">DataPlatformEngineer</span>:</p>
+<p class="pl-4">name = <span class="text-emerald-300">"HAMZA MEHBOOB"</span></p>
+<p class="pl-4">role = <span class="text-emerald-300">"Senior Data Engineer & Cloud Architect"</span></p>
+<p class="pl-4">years_exp = <span class="text-orange-400">9</span></p>
+<p class="pl-4">location = <span class="text-emerald-300">"Chico, CA 95973"</span></p>
+<p class="pl-4">cloud_stack = [<span class="text-emerald-300">"AWS"</span>, <span class="text-emerald-300">"Databricks"</span>, <span class="text-emerald-300">"Snowflake"</span>, <span class="text-emerald-300">"Azure"</span>]</p>
+<p class="pl-4">annual_finops_savings = <span class="text-emerald-300">"$140,000/yr"</span></p>`,
+
+            stream: `<p class="text-slate-500"># PySpark Medallion Delta Lake Ingestion Stream</p>
+<p><span class="text-purple-400">from</span> pyspark.sql <span class="text-purple-400">import</span> SparkSession</p>
+<br>
+<p>spark = SparkSession.builder \\</p>
+<p class="pl-4">.appName(<span class="text-emerald-300">"Hamza_EHR_Ingestion"</span>) \\</p>
+<p class="pl-4">.getOrCreate()</p>
+<br>
+<p>df_gold = spark.readStream \\</p>
+<p class="pl-4">.format(<span class="text-emerald-300">"delta"</span>) \\</p>
+<p class="pl-4">.load(<span class="text-emerald-300">"s3://medallion/silver/patient_ehr"</span>)</p>`,
+
+            json: `<p class="text-slate-500">// Quantified System Metrics JSON</p>
+<p>{</p>
+<p class="pl-4"><span class="text-cyan-300">"engineer"</span>: <span class="text-emerald-300">"HAMZA MEHBOOB"</span>,</p>
+<p class="pl-4"><span class="text-cyan-300">"daily_ingestion_tb"</span>: <span class="text-orange-400">5.2</span>,</p>
+<p class="pl-4"><span class="text-cyan-300">"kafka_events_daily"</span>: <span class="text-orange-400">150000000</span>,</p>
+<p class="pl-4"><span class="text-cyan-300">"sla_uptime"</span>: <span class="text-emerald-300">"99.99%"</span>,</p>
+<p class="pl-4"><span class="text-cyan-300">"status"</span>: <span class="text-emerald-300">"READY_FOR_IMPACT"</span></p>
+<p>}</p>`
+        };
+
+        function switchTerminalTab(tabKey) {
+            document.getElementById('terminal-content').innerHTML = terminalSnippets[tabKey];
+            ['py', 'stream', 'json'].forEach(k => {
+                const btn = document.getElementById(`tab-${k}`);
+                if (k === tabKey) {
+                    btn.className = "px-3 py-1 rounded-lg bg-white/10 text-white font-bold border border-white/10";
+                } else {
+                    btn.className = "px-3 py-1 rounded-lg bg-white/5 text-slate-400 hover:text-white border border-transparent";
+                }
+            });
+        }
+
+        const skillsData = [
+            // Cloud Platforms
+            { name: 'AWS S3 / EMR / Glue', cat: 'cloud', level: 'Expert', years: '8 yrs', tags: ['Data Lake', 'EMR', 'Glue ETL'] },
+            { name: 'Azure Databricks', cat: 'cloud', level: 'Expert', years: '6 yrs', tags: ['Delta Lake', 'PySpark', 'Unity Catalog'] },
+            { name: 'GCP BigQuery / Dataflow', cat: 'cloud', level: 'Proficient', years: '4 yrs', tags: ['BigQuery', 'Pub/Sub'] },
+            
+            // Big Data & Streaming
+            { name: 'Apache Spark / PySpark', cat: 'bigdata', level: 'Expert', years: '8 yrs', tags: ['Distributed Compute', 'Optimization'] },
+            { name: 'Delta Lake & Parquet', cat: 'bigdata', level: 'Expert', years: '6 yrs', tags: ['ACID Transactions', 'Time Travel'] },
+            { name: 'Apache Kafka & Flink', cat: 'bigdata', level: 'Expert', years: '5 yrs', tags: ['Streaming', 'Sub-second Latency'] },
+
+            // Data Warehousing
+            { name: 'Snowflake Data Cloud', cat: 'warehousing', level: 'Expert', years: '6 yrs', tags: ['Virtual Warehouses', 'Data Vault 2.0'] },
+            { name: 'AWS Redshift', cat: 'warehousing', level: 'Expert', years: '7 yrs', tags: ['Spectrum', 'Star Schema'] },
+            { name: 'dbt (data build tool)', cat: 'warehousing', level: 'Expert', years: '5 yrs', tags: ['Data Modeling', 'Testing'] },
+
+            // AI & Vector Infra
+            { name: 'Pinecone Vector DB', cat: 'ai', level: 'Proficient', years: '2 yrs', tags: ['Embeddings', 'RAG Infra'] },
+            { name: 'pgvector & Redis Vector', cat: 'ai', level: 'Proficient', years: '2 yrs', tags: ['Semantic Search', 'Fast KNN'] },
+            { name: 'MLflow & Pipeline Ops', cat: 'ai', level: 'Proficient', years: '3 yrs', tags: ['Model Lineage', 'Feature Store'] },
+
+            // Orchestration
+            { name: 'Apache Airflow', cat: 'orchestration', level: 'Expert', years: '7 yrs', tags: ['DAGs', 'Celery Executor'] },
+            { name: 'Dagster & Prefect', cat: 'orchestration', level: 'Proficient', years: '3 yrs', tags: ['Asset-based Pipelines'] },
+            { name: 'Debezium CDC', cat: 'orchestration', level: 'Expert', years: '4 yrs', tags: ['Change Data Capture', 'Kafka Connect'] },
+
+            // Languages & DBs
+            { name: 'Python (Pandas, PySpark)', cat: 'languages', level: 'Expert', years: '9 yrs', tags: ['AsyncIO', 'Data Wrangling'] },
+            { name: 'SQL (ANSI, T-SQL, PL/pgSQL)', cat: 'languages', level: 'Expert', years: '9 yrs', tags: ['Complex CTEs', 'Window Functions'] },
+            { name: 'PostgreSQL & MongoDB', cat: 'languages', level: 'Expert', years: '8 yrs', tags: ['JSONB Indexing', 'Sharding'] },
+
+            // DevOps & Quality
+            { name: 'Terraform & IaC', cat: 'devops', level: 'Proficient', years: '5 yrs', tags: ['Infrastructure as Code'] },
+            { name: 'Docker & Kubernetes', cat: 'devops', level: 'Proficient', years: '6 yrs', tags: ['Containerization', 'Helm'] },
+            { name: 'Great Expectations', cat: 'devops', level: 'Expert', years: '4 yrs', tags: ['Data Quality', 'Validation'] },
+
+            // Governance & Security
+            { name: 'Unity Catalog', cat: 'governance', level: 'Expert', years: '3 yrs', tags: ['Row/Column Security', 'HIPAA/PHI'] },
+            { name: 'Data Lineage & Masking', cat: 'governance', level: 'Expert', years: '5 yrs', tags: ['Column Encryption', 'RBAC'] },
+
+            // Leadership & FinOps
+            { name: 'FinOps Cloud Cost Tuning', cat: 'leadership', level: 'Expert', years: '5 yrs', tags: ['AWS/Databricks Savings', '$140K/yr'] },
+            { name: 'Data Architecture & Mentorship', cat: 'leadership', level: 'Expert', years: '6 yrs', tags: ['System Design', 'Code Reviews'] }
+        ];
+
+        let activeCategory = 'all';
+
+        function renderSkills() {
+            const grid = document.getElementById('skills-grid');
+            const searchVal = document.getElementById('skill-search').value.toLowerCase();
+            
+            const filtered = skillsData.filter(s => {
+                const matchCat = activeCategory === 'all' || s.cat === activeCategory;
+                const matchSearch = s.name.toLowerCase().includes(searchVal) || s.tags.some(t => t.toLowerCase().includes(searchVal));
+                return matchCat && matchSearch;
+            });
+
+            grid.innerHTML = filtered.map(s => `
+                <div class="glass-panel rounded-2xl p-4 border border-white/10 space-y-3 hover:border-cyan-400 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono font-bold text-white">${s.name}</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-bold">${s.level}</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                        <span>Experience: <strong class="text-slate-200">${s.years}</strong></span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-1 border-t border-white/5">
+                        ${s.tags.map(t => `<span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat, btn) {
+            activeCategory = cat;
+            document.querySelectorAll('.skill-tab').forEach(b => {
+                b.classList.remove('border-cyan-400', 'bg-cyan-500/10', 'text-cyan-300');
+                b.classList.add('border-white/10', 'bg-white/5', 'text-slate-300');
+            });
+            btn.classList.remove('border-white/10', 'bg-white/5', 'text-slate-300');
+            btn.classList.add('border-cyan-400', 'bg-cyan-500/10', 'text-cyan-300');
+            renderSkills();
+        }
+
+        function filterSkills() {
+            renderSkills();
+        }
+
+        const expDetails = {
+            integra: {
+                company: 'Integra Connect',
+                role: 'Senior Data Engineer',
+                period: 'April 2023 – Present',
+                architecture: 'Medallion Delta Lakehouse (Bronze -> Silver -> Gold) on Azure Databricks & AWS S3 with Unity Catalog security governance.',
+                highlights: [
+                    'Architected petabyte-scale EHR patient data pipelines handling 5TB+ daily clinical data ingestion across 200+ healthcare facilities.',
+                    'Optimized PySpark compute clusters reducing query runtime by 65% and saving $140,000 annually in AWS & Databricks costs.',
+                    'Engineered sub-minute real-time Kafka streaming ingestion for oncology clinical events, enabling instant physician alert dashboards.',
+                    'Implemented Unity Catalog fine-grained access control ensuring HIPAA, PHI, and SOC-2 data compliance.'
+                ],
+                stack: ['Databricks', 'Delta Lake', 'PySpark', 'AWS S3', 'AWS EMR', 'Kafka', 'Unity Catalog', 'Great Expectations']
+            },
+            pythian: {
+                company: 'Pythian',
+                role: 'Warehouse Data Engineer',
+                period: 'March 2022 – March 2023',
+                architecture: 'Multi-Tenant Snowflake Data Warehouse with dbt transformation pipelines and Airflow orchestration.',
+                highlights: [
+                    'Led data warehouse migrations from legacy Hadoop/Netezza architectures to Snowflake Data Cloud for enterprise financial clients.',
+                    'Implemented Change Data Capture (CDC) using Debezium and Kafka Connect to capture real-time SQL transaction logs.',
+                    'Designed dbt data modeling framework with automated schema testing and data quality alerts.'
+                ],
+                stack: ['Snowflake', 'dbt Core', 'Apache Airflow', 'Debezium CDC', 'Terraform', 'PostgreSQL', 'Docker']
+            },
+            ocrolus: {
+                company: 'Ocrolus',
+                role: 'Big Data Engineer',
+                period: 'September 2019 – March 2022',
+                architecture: 'Document Intelligence & Financial Data Processing Engine with PostgreSQL & AWS Lambda.',
+                highlights: [
+                    'Built automated financial document extraction pipelines processing over 2M loan applications daily.',
+                    'Reduced database query execution times by 80% through PostgreSQL index partitioning and star-schema redesign.',
+                    'Automated ETL workflow monitoring and alerting in Airflow and AWS CloudWatch.'
+                ],
+                stack: ['Python', 'PostgreSQL', 'AWS Lambda', 'Airflow', 'Docker', 'Redis']
+            },
+            ordergroove: {
+                company: 'Ordergroove',
+                role: 'ETL/ELT Developer',
+                period: 'June 2017 – August 2019',
+                architecture: 'E-Commerce Subscription Data API & Analytics Warehouse.',
+                highlights: [
+                    'Developed recurring subscription analytics data synchronization pipelines serving top global retailers.',
+                    'Created RESTful data services in Python/Django for high-frequency transactional data reporting.'
+                ],
+                stack: ['Python', 'Django', 'MySQL', 'Redis', 'Celery', 'AWS EC2']
+            }
+        };
+
+        function openExperienceModal(key) {
+            const item = expDetails[key];
+            if (!item) return;
+
+            const modal = document.getElementById('exp-modal');
+            const content = document.getElementById('exp-modal-content');
+
+            content.innerHTML = `
+                <div class="space-y-4 font-mono">
+                    <div class="border-b border-white/10 pb-4">
+                        <span class="text-xs theme-primary-text font-bold uppercase tracking-wider">${item.company}</span>
+                        <h3 class="text-2xl font-black text-white mt-1">${item.role}</h3>
+                        <span class="text-xs text-slate-400 font-bold">${item.period}</span>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs uppercase text-slate-400 mb-1 font-bold">Architecture Overview</h4>
+                        <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-xs text-cyan-300">
+                            ${item.architecture}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs uppercase text-slate-400 mb-2 font-bold">Key Accomplishments & Deliverables</h4>
+                        <ul class="space-y-2 text-xs text-slate-300 font-sans">
+                            ${item.highlights.map(h => `<li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-cyan-400 mt-0.5"></i> <span>${h}</span></li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs uppercase text-slate-400 mb-2 font-bold">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            ${item.stack.map(s => `<span class="px-2.5 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold">${s}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeExperienceModal() {
+            document.getElementById('exp-modal').classList.add('hidden');
+        }
+
+        const projectData = {
+            project1: {
+                title: 'HIPAA-Compliant Patient Data Lakehouse & Analytics',
+                subtitle: 'Medallion Delta Lake Architecture on Databricks & AWS',
+                flowSteps: [
+                    { name: 'HL7/FHIR Source', desc: '5TB+ Daily EHR Ingestion', icon: 'fa-hospital' },
+                    { name: 'Bronze Parquet', desc: 'Immutable Append-Only Lake', icon: 'fa-database' },
+                    { name: 'Silver Delta', desc: 'De-identified PHI & Column Security', icon: 'fa-filter' },
+                    { name: 'Gold Datasets', desc: 'Oncology Analytics & BI Views', icon: 'fa-chart-pie' }
+                ],
+                code: `# PySpark Structured Streaming Write to Delta Gold Table
+(df_clean.writeStream
+    .format("delta")
+    .outputMode("append")
+    .option("checkpointLocation", "s3://lakehouse/checkpoints/patient_ehr")
+    .table("gold.patient_oncology_analytics"))`
+            },
+            project2: {
+                title: 'Real-Time Financial Transaction & Fraud Detection Platform',
+                subtitle: 'Sub-second Streaming Analytics via Kafka & Flink',
+                flowSteps: [
+                    { name: 'Payment Gateway', desc: '150M+ Daily Financial Events', icon: 'fa-credit-card' },
+                    { name: 'Apache Kafka', desc: 'Partitioned Event Queue', icon: 'fa-bolt' },
+                    { name: 'Apache Flink', desc: 'Sub-25ms Sliding Windows', icon: 'fa-gears' },
+                    { name: 'pgvector KNN', desc: 'Instant Anomaly Score & Block', icon: 'fa-shield-halved' }
+                ],
+                code: `// Flink Stream Processing Window
+DataStream<Transaction> alerts = stream
+    .keyBy(Transaction::getAccountId)
+    .window(TumblingProcessingTimeWindows.of(Time.seconds(5)))
+    .process(new FraudEvaluationFunction());`
+            },
+            project3: {
+                title: 'Multi-Cloud Customer Analytics & Data Integration Platform',
+                subtitle: 'Automated Compute Optimization & Rightsizing',
+                flowSteps: [
+                    { name: 'Cloud APIs', desc: 'AWS & Snowflake Usage Logs', icon: 'fa-cloud' },
+                    { name: 'dbt Models', desc: 'Cost Attribution Data Vault', icon: 'fa-diagram-project' },
+                    { name: 'Auto-Scaler', desc: 'Dynamic Warehouse Suspension', icon: 'fa-sliders' },
+                    { name: 'FinOps Portal', desc: 'Unit Economics Dashboard', icon: 'fa-chart-line' }
+                ],
+                code: `-- dbt Snowflake Cluster Optimization Model
+SELECT 
+    warehouse_name,
+    SUM(credits_used) * 3.00 AS total_cost_usd,
+    AVG(avg_cluster_count) AS avg_concurrency
+FROM {{ ref('stg_snowflake_warehouse_metering') }}
+GROUP BY 1 HAVING total_cost_usd > 1000`
+            }
+        };
+
+        function openProjectModal(key) {
+            const p = projectData[key];
+            if (!p) return;
+
+            const modal = document.getElementById('proj-modal');
+            const content = document.getElementById('proj-modal-content');
+
+            content.innerHTML = `
+                <div class="space-y-6 font-mono">
+                    <div class="border-b border-white/10 pb-4">
+                        <span class="text-xs uppercase theme-primary-text font-bold">System Architecture Simulation</span>
+                        <h3 class="text-2xl font-black text-white mt-1">${p.title}</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">${p.subtitle}</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs uppercase text-slate-400 font-bold">Pipeline Execution Topology</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-slate-950/90 border border-white/10 text-xs">
+                            ${p.flowSteps.map((step, idx) => `
+                                <div class="p-3 rounded-xl bg-white/5 border border-cyan-500/20 text-center space-y-1 relative group hover:border-cyan-400 transition-all">
+                                    <div class="w-8 h-8 mx-auto rounded-lg theme-primary-bg text-slate-950 flex items-center justify-center font-bold text-sm">
+                                        <i class="fa-solid ${step.icon}"></i>
+                                    </div>
+                                    <div class="font-bold text-white text-[11px] pt-1">${step.name}</div>
+                                    <div class="text-[9px] text-slate-400">${step.desc}</div>
+                                    ${idx < 3 ? `<i class="fa-solid fa-arrow-right hidden sm:block absolute -right-3 top-1/2 -translate-y-1/2 text-cyan-400 text-xs z-20"></i>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs uppercase text-slate-400 font-bold">Core Transformation Logic</h4>
+                        <pre class="p-4 rounded-2xl bg-slate-950 border border-white/10 text-xs text-emerald-300 overflow-x-auto"><code>${p.code}</code></pre>
+                    </div>
+
+                    <div class="flex justify-end pt-2">
+                        <button onclick="closeProjectModal()" class="px-6 py-2.5 rounded-xl font-bold text-xs theme-gradient-bg text-slate-950 hover:opacity-90 transition-all">
+                            Close Simulation
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('proj-modal').classList.add('hidden');
+        }
+
+        function openResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+        }
+
+        const canvas = document.getElementById('data-bg');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let nodes = [];
+        let packets = [];
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initNodes();
+        }
+
+        function initNodes() {
+            nodes = [];
+            packets = [];
+            const count = Math.floor((width * height) / 22000);
+            for (let i = 0; i < count; i++) {
+                nodes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.45,
+                    vy: (Math.random() - 0.5) * 0.45,
+                    radius: Math.random() * 2 + 1.5
+                });
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            const theme = themes[currentThemeKey];
+            const primaryColor = theme.primary;
+
+            // Connect nearby nodes
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 130) {
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = primaryColor;
+                        ctx.globalAlpha = (1 - dist / 130) * 0.18;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+
+                        // Occasionally spawn dynamic data packet along edge
+                        if (Math.random() < 0.001) {
+                            packets.push({
+                                x1: nodes[i].x, y1: nodes[i].y,
+                                x2: nodes[j].x, y2: nodes[j].y,
+                                progress: 0,
+                                speed: 0.02 + Math.random() * 0.02
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Animate streaming packet transfers
+            ctx.globalAlpha = 0.9;
+            for (let p = packets.length - 1; p >= 0; p--) {
+                const pkt = packets[p];
+                pkt.progress += pkt.speed;
+
+                const currX = pkt.x1 + (pkt.x2 - pkt.x1) * pkt.progress;
+                const currY = pkt.y1 + (pkt.y2 - pkt.y1) * pkt.progress;
+
+                ctx.beginPath();
+                ctx.arc(currX, currY, 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = primaryColor;
+                ctx.fill();
+
+                if (pkt.progress >= 1) {
+                    packets.splice(p, 1);
+                }
+            }
+
+            // Update & draw nodes
+            ctx.globalAlpha = 0.8;
+            for (let i = 0; i < nodes.length; i++) {
+                const n = nodes[i];
+                n.x += n.vx;
+                n.y += n.vy;
+
+                if (n.x < 0 || n.x > width) n.vx *= -1;
+                if (n.y < 0 || n.y > height) n.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+                ctx.fillStyle = primaryColor;
+                ctx.fill();
+            }
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'glass-panel px-4 py-3 rounded-2xl border border-cyan-400 text-xs font-mono text-white shadow-2xl flex items-center gap-2.5 pointer-events-auto transform translate-y-2 transition-all duration-300';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i> <span class="font-bold">${message}</span>`;
+            
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function copyToClipboard(text, msg) {
+            const input = document.createElement('textarea');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showToast(msg || 'Copied to clipboard!');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast('Message sent! Hamza will contact you shortly.');
+            e.target.reset();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-drawer');
+            menu.classList.toggle('hidden');
+        }
+
+        window.onload = function() {
+            resizeCanvas();
+            renderSkills();
+            switchTerminalTab('py');
+            animateCanvas();
+            window.addEventListener('resize', resizeCanvas);
+        };
+    </script>
+</body>
+</html>
